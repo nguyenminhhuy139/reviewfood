@@ -3,6 +3,7 @@ package HuyLA.review.user;
 import jakarta.persistence.*;
 import lombok.*;
 
+import javax.management.relation.Role;
 import java.time.LocalDateTime;
 
 @Entity
