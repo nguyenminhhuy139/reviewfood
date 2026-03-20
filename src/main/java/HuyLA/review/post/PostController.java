@@ -17,7 +17,7 @@ public class PostController {
     private final PostRepository postRepository;
 
     @PostMapping
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public Post createPost(
             @RequestBody CreatePostRequest request,
             @AuthenticationPrincipal User user
