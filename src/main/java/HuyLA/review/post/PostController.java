@@ -29,4 +29,19 @@ public class PostController {
     public List<Post> getPosts(){
         return postRepository.findAll();
     }
+
+    @PutMapping("/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
+    public Post update(
+            @PathVariable Long id,
+            @RequestBody CreatePostRequest request
+    ) {
+        return postService.updatePost(id, request);
+    }
+
+    @DeleteMapping("/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
+    public void delete(@PathVariable Long id) {
+        postService.deletePost(id);
+    }
 }

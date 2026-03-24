@@ -1,10 +1,12 @@
 package HuyLA.review.post;
 
+import HuyLA.review.comment.Comment;
 import HuyLA.review.user.User;
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Getter
@@ -29,4 +31,7 @@ public class Post {
 
     @ManyToOne
     private User author;
+
+    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Comment> comments;
 }

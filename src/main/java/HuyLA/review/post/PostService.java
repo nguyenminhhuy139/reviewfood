@@ -24,4 +24,18 @@ public class PostService {
 
         return postRepository.save(post);
     }
+
+    public Post updatePost(Long id, CreatePostRequest request) {
+
+        Post post = postRepository.findById(id).orElseThrow();
+
+        post.setTitle(request.getTitle());
+        post.setContent(request.getContent());
+
+        return postRepository.save(post);
+    }
+
+    public void deletePost(Long id) {
+        postRepository.deleteById(id);
+    }
 }

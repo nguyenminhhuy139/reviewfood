@@ -2,7 +2,9 @@ package HuyLA.review.security;
 
 import HuyLA.review.user.User;
 import io.jsonwebtoken.*;
+import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
+import lombok.Value;
 import org.springframework.stereotype.Service;
 
 import java.security.Key;
@@ -13,10 +15,12 @@ import java.util.Map;
 @Service
 public class JwtService {
 
-    private final String SECRET = "mysecretkeymysecretkeymysecretkey";
+    @Value("${jwt.secret}")
+    private String secretKey;
 
     private Key getSignKey() {
-        return Keys.hmacShaKeyFor(SECRET.getBytes());
+        byte[] keyBytes = Decoders.BASE64.decode(secretKey);
+        return Keys.hmacShaKeyFor(keyBytes);
     }
 
     private Claims extractAllClaims(String token) {
