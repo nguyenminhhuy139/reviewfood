@@ -17,7 +17,7 @@ public class CorsConfig {
         config.setAllowedOrigins(List.of(
                 "http://localhost:5173/",
                 "http://127.0.0.1:5173",
-                "https://reviewfood-frontend.onrender.com"
+                "https://review-moi-thu-tren-doi.onrender.com/"
         ));
 
         config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
